@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Thêm dữ liệu</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formData">
+    <mat-form-field appearance="outline">
+      <mat-label>Mã</mat-label>
+      <input formControlName="ma" matInput placeholder="Mã" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Tên</mat-label>
+      <input formControlName="tenNgan" matInput placeholder="Tên" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Họ và tên</mat-label>
+      <input formControlName="tenDayDu" matInput placeholder="Họ và tên" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Địa chỉ</mat-label>
+      <input formControlName="diaChi" matInput placeholder="Địa chỉ" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Mã thuế</mat-label>
+      <input formControlName="maSoThue" matInput placeholder="Mã thuế" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Liên hệ điện toán</mat-label>
+      <input
+        formControlName="lienHeDienToan"
+        matInput
+        placeholder="Liên hệ điện toán"
+      />
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button
+    mat-raised-button
+    color="warn"
+    style="margin-right: 8px"
+    (click)="deleteRecord()"
+  >
+    {{ actionBtnWarn }}
+  </button>
+  <button mat-raised-button color="primary" (click)="addRecord()">
+    {{ actionBtnPrimary }}
+  </button>
+</div>

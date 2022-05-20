@@ -1,0 +1,138 @@
+export interface dataElement {
+  id?: number;
+  ma?: string | null;
+  tenNgan?: string | null;
+  tenDayDu?: string | null;
+  diaChi?: string | null;
+  lienHeDienToan?: string | null;
+  maSoThue?: string | null;
+}
+
+export const ELEMENT_DATA: dataElement[] = [
+  {
+    id: 471,
+    ma: null,
+    tenNgan: 'Ngo Van Quang',
+    diaChi: 'Bac Giang',
+    lienHeDienToan: null,
+    tenDayDu: null,
+    maSoThue: '89802012',
+  },
+  {
+    id: 472,
+    ma: null,
+    tenNgan: 'Ngo Truong Giang',
+    diaChi: 'Bac Giang',
+    lienHeDienToan: null,
+    tenDayDu: null,
+    maSoThue: '121212',
+  },
+  {
+    id: 287,
+    ma: '2222999',
+    tenNgan: 'Thuan Cao',
+    diaChi: 'Thai Binh',
+    lienHeDienToan: '0963176463',
+    tenDayDu: 'NVT',
+    maSoThue: '0231234',
+  },
+  {
+    id: 481,
+    ma: null,
+    tenNgan: 'Nguyễn Văn Thuấn',
+    diaChi: 'ngõ 80 số nhà 44 đại linh,trung văn',
+    lienHeDienToan: null,
+    tenDayDu: null,
+    maSoThue: null,
+  },
+  {
+    id: 248,
+    ma: '22',
+    tenNgan: 'Thuan',
+    diaChi: 'Thai Binh',
+    lienHeDienToan: '0963176463',
+    tenDayDu: 'NVT',
+    maSoThue: '023182101212',
+  },
+  {
+    id: 251,
+    ma: null,
+    tenNgan: 'hieu',
+    diaChi: 'Thai Binh',
+    lienHeDienToan: null,
+    tenDayDu: null,
+    maSoThue: null,
+  },
+  {
+    id: 249,
+    ma: null,
+    tenNgan: 'nam',
+    diaChi: 'ha noi',
+    lienHeDienToan: null,
+    tenDayDu: null,
+    maSoThue: null,
+  },
+  {
+    id: 473,
+    ma: null,
+    tenNgan: 'Ngo Truong Bo',
+    diaChi: 'BG',
+    lienHeDienToan: null,
+    tenDayDu: null,
+    maSoThue: null,
+  },
+  {
+    id: 5,
+    ma: '131323',
+    tenNgan: 'Duc',
+    diaChi: 'Ha noi',
+    lienHeDienToan: '03234423909',
+    tenDayDu: 'Tran Hau Duc Thang',
+    maSoThue: '12312312',
+  },
+  {
+    id: 2,
+    ma: '1313',
+    tenNgan: 'Duc Thang',
+    diaChi: 'Ha noi',
+    lienHeDienToan: '0909090909',
+    tenDayDu: 'Tran Hau Duc Thang',
+    maSoThue: '12312312',
+  },
+  {
+    id: 262,
+    ma: '1234',
+    tenNgan: 'hung',
+    diaChi: 'hung yen',
+    lienHeDienToan: null,
+    tenDayDu: null,
+    maSoThue: '1234435',
+  },
+  {
+    id: 288,
+    ma: '131323',
+    tenNgan: 'Duc',
+    diaChi: 'Ha noi',
+    lienHeDienToan: '03234423909',
+    tenDayDu: 'Tran Hau Duc Thang',
+    maSoThue: '12312312',
+  },
+  {
+    id: 285,
+    ma: '2122',
+    tenNgan: 'Thuan Van Nguyen',
+    diaChi: 'Thai Binh',
+    lienHeDienToan: '0963176463',
+    tenDayDu: 'NVT',
+    maSoThue: '023182101212',
+  },
+  {
+    id: 286,
+    ma: '2222',
+    tenNgan: 'Thuan Cao',
+    diaChi: 'Thai Binh',
+    lienHeDienToan: '0963176463',
+    tenDayDu: 'NVT',
+    maSoThue: '023182101212',
+  },
+];
