@@ -57,6 +57,12 @@ export class TableComponent implements OnInit {
     });
   }
 
+  openDialog(): void {
+    this.dialog.open(DialogComponent, {
+      width: '30%',
+    });
+  }
+
   // use to bind to dialog, when dialog press save method will call this and update data in table
   fetchData(data: SuDungData) {
     this.tableData.getDataOnInit();

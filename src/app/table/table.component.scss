@@ -2,7 +2,9 @@ table {
   width: 100%;
   // background-color: darkcyan;
 }
-
+.table {
+  position: relative;
+}
 .mat-row .mat-cell {
   border-bottom: 1px solid transparent;
   border-top: 1px solid transparent;
@@ -11,6 +13,12 @@ table {
 
 .mat-row:hover .mat-cell {
   border-color: currentColor;
+}
+
+.add-btn {
+  position: absolute;
+  left: 24px;
+  bottom: 12px;
 }
 
 // .demo-row-is-clicked {

@@ -1,4 +1,14 @@
-<div class="mat-elevation-z8">
+<div class="table">
+  <button
+    mat-raised-button
+    color="primary"
+    class="add-btn"
+    aria-label="Example icon-button with share icon"
+    (click)="openDialog()"
+  >
+    <mat-icon>add</mat-icon>
+    Thêm
+  </button>
   <table mat-table [dataSource]="dataSource" matSort>
     <!-- Position Column -->
     <ng-container matColumnDef="id">

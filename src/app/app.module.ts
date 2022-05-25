@@ -8,9 +8,11 @@ import { MaterialModule } from './material/material.module';
 import { TableComponent } from './table/table.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { SearchComponent } from './search/search.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToastComponent } from './toast/toast.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { ToastComponent } from './toast/toast.component';
     TableComponent,
     DialogComponent,
     SearchComponent,
-    ToastComponent,
+    LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,13 @@ import { ToastComponent } from './toast/toast.component';
     ReactiveFormsModule, // for form group
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

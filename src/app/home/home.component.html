@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="navbar">
+  <span>Training App</span>
+  <!-- <span class="example-spacer"></span> -->
+  <button
+    mat-raised-button
+    aria-label="Example icon-button with share icon"
+    (click)="logout()"
+  >
+    Logout
+  </button>
+</mat-toolbar>
+<div class="main">
+  <app-search></app-search>
+  <app-table></app-table>
+</div>
