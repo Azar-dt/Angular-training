@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthInterceptor } from '../interceptor/auth.interceptor';
 import { ApiService } from '../service/api.service';
@@ -22,8 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
-    private router: Router,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -39,11 +40,13 @@ export class LoginComponent implements OnInit {
       if (val.accessToken && val.refreshToken) {
         window.localStorage.setItem('accessToken', val.accessToken);
         window.localStorage.setItem('refreshToken', val.refreshToken);
+        this.snackBar.open('Login successfully 🚀🚀🚀', 'Close', {
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          duration: 3000,
+          direction: 'ltr',
+        });
         this.tokenService.onInit();
-
-        console.log('login');
-
-        console.log('done login');
       }
     });
   }

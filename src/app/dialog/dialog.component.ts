@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from '../service/api.service';
 import { TableDataService } from '../service/table-data.service';
 import { SuDungData } from '../types/SuDungData';
@@ -14,13 +15,16 @@ export class DialogComponent implements OnInit {
   formData!: FormGroup;
   actionBtnPrimary: string = 'Thêm';
   actionBtnWarn: string = '';
+  title: string = 'Thêm dữ liệu';
+
   constructor(
     private api: ApiService,
     private formBuilder: FormBuilder,
     private matDialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA)
     public data: { editData: SuDungData; fetchData: () => {} },
-    private tableData: TableDataService
+    private tableData: TableDataService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -32,10 +36,11 @@ export class DialogComponent implements OnInit {
       maSoThue: ['', Validators.required],
       lienHeDienToan: ['', Validators.required],
     });
-    console.log(this.data);
+    // console.log(this.data);
     if (this.data) {
       this.actionBtnPrimary = 'Sửa';
       this.actionBtnWarn = 'Xóa';
+      this.title = 'Sửa dữ liệu';
       const edit = this.data.editData;
       this.formData.patchValue({
         ma: edit.ma,
@@ -55,7 +60,11 @@ export class DialogComponent implements OnInit {
       this.api.addRecord(this.formData.value).subscribe({
         next: (res: any) => {
           if (res.success) {
-            alert('Thêm thành công');
+            this.snackBar.open('Thêm thành công 🚀🚀🚀', 'Close', {
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+              duration: 3000,
+            });
             this.tableData.getDataOnInit();
             this.formData.reset();
             this.matDialogRef.close();
@@ -72,17 +81,29 @@ export class DialogComponent implements OnInit {
         .subscribe({
           next: (res: any) => {
             if (res.success) {
-              alert('Sửa thành công');
+              this.snackBar.open('Sửa thành công 🚀🚀🚀', 'Đóng', {
+                horizontalPosition: 'center',
+                verticalPosition: 'bottom',
+                duration: 3000,
+              });
               this.tableData.getDataOnInit();
               // this.data.fetchData();
               this.matDialogRef.close();
               this.formData.reset();
             } else {
-              alert('Không hợp lệ !!!');
+              this.snackBar.open('Lỗi 💣💣💣', 'Đóng', {
+                horizontalPosition: 'center',
+                verticalPosition: 'bottom',
+                duration: 3000,
+              });
             }
           },
           error: (error) => {
-            alert('Lỗi !!!');
+            this.snackBar.open('Lỗi 💣💣💣', 'Đóng', {
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+              duration: 3000,
+            });
             console.log(error);
           },
         });

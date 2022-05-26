@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subject } from 'rxjs';
@@ -11,7 +12,11 @@ export class TokenService {
   accessToken: string = '';
   refreshToken: string = '';
   isLogin: boolean = false;
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   onInit() {
     if (
@@ -46,9 +51,10 @@ export class TokenService {
         let timeLeft = expirationDate!.getTime() - date.getTime(); //milisecond
         setTimeout(() => {
           this.refreshAccessToken();
-        }, timeLeft - 40 * 1000); // con 30s het thi refresh
+        }, timeLeft - 40 * 1000); // con 40s het han thi refresh
 
         this.isLogin = true;
+
         this.router.navigate(['/']);
       }
     } else {
@@ -61,6 +67,7 @@ export class TokenService {
   reset() {
     window.localStorage.removeItem('refreshToken');
     window.localStorage.removeItem('accessToken');
+    this.router.navigate(['/login']);
     this.onInit();
   }
 
