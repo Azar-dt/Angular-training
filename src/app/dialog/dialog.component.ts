@@ -22,7 +22,7 @@ export class DialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     private matDialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public data: { editData: SuDungData; fetchData: () => {} },
+    public data: SuDungData,
     private tableData: TableDataService,
     private snackBar: MatSnackBar
   ) {}
@@ -41,7 +41,7 @@ export class DialogComponent implements OnInit {
       this.actionBtnPrimary = 'Sửa';
       this.actionBtnWarn = 'Xóa';
       this.title = 'Sửa dữ liệu';
-      const edit = this.data.editData;
+      const edit = this.data;
       this.formData.patchValue({
         ma: edit.ma,
         tenNgan: edit.tenNgan,
@@ -77,7 +77,7 @@ export class DialogComponent implements OnInit {
     }
     if (this.formData.valid && this.data) {
       this.api
-        .editRecord({ id: this.data.editData.id, ...this.formData.value })
+        .editRecord({ id: this.data.id, ...this.formData.value })
         .subscribe({
           next: (res: any) => {
             if (res.success) {
@@ -111,7 +111,7 @@ export class DialogComponent implements OnInit {
   }
 
   deleteRecord() {
-    const data = this.data.editData;
+    const data = this.data;
     this.api.deleteRecord(data!.id as number).subscribe({
       next: (res: any) => {
         if (res.success) {

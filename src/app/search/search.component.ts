@@ -19,7 +19,9 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.tableData.limit.subscribe((val) => (this.limit = val));
+    this.tableData.limit.subscribe((val) => {
+      this.limit = val;
+    });
     this.tableData.currentPage.subscribe((val) => (this.currentPage = val));
     this.tableData.searchData.subscribe((val) => (this.searchData = val));
     this.formData = this.formBuilder.group({

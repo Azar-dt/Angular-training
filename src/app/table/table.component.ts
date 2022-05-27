@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -30,14 +30,18 @@ export class TableComponent implements OnInit {
 
   dataSource = new MatTableDataSource<SuDungData>();
 
-  constructor(private tableData: TableDataService, private dialog: MatDialog) {}
+  constructor(
+    private tableData: TableDataService,
+    private dialog: MatDialog,
+    private zone: NgZone
+  ) {}
 
   ngOnInit(): void {
-    this.tableData.getDataOnInit();
+    // this.tableData.getDataOnInit();
 
     // subcribe component to dataSUbject, khi dataSubject thay doi thi component thay doi
     this.tableData.dataSubject.subscribe((data) => {
-      console.log('dataSubject', data);
+      // console.log('dataSubject', data);
 
       this.dataSource.data = data;
     });
@@ -48,12 +52,11 @@ export class TableComponent implements OnInit {
   }
 
   openEdit(row: SuDungData) {
-    this.dialog.open(DialogComponent, {
-      width: '400px',
-      data: {
-        editData: row,
-        fetchData: this.fetchData.bind(this),
-      },
+    this.zone.run(() => {
+      this.dialog.open(DialogComponent, {
+        width: '30%',
+        data: row,
+      });
     });
   }
 
@@ -61,11 +64,6 @@ export class TableComponent implements OnInit {
     this.dialog.open(DialogComponent, {
       width: '30%',
     });
-  }
-
-  // use to bind to dialog, when dialog press save method will call this and update data in table
-  fetchData(data: SuDungData) {
-    this.tableData.getDataOnInit();
   }
 
   paging(e: PageEvent) {

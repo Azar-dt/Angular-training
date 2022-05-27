@@ -40,7 +40,8 @@ export class TableDataService {
   }
   getDataOnInit() {
     console.log('get data');
-    this.updateSearchData({});
+    // this.updateSearchData({});
+
     this.api.paging({ suDung: {}, limit: 3, currentPage: 0 }).subscribe({
       next: (res: any) => {
         console.log(res);

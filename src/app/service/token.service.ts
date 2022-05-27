@@ -12,11 +12,7 @@ export class TokenService {
   accessToken: string = '';
   refreshToken: string = '';
   isLogin: boolean = false;
-  constructor(
-    private apiService: ApiService,
-    private router: Router,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   onInit() {
     if (
